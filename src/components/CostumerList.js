@@ -3,36 +3,36 @@ import Modal from "./CostumerModal";
 import { history } from "../routers/AppRouter";
 
 const CostumerList = ({ costumers }) => {
-  const [isOpenModal, setOpenModal] = useState(false);
+  const [isOpenModal, setOpenModal] = useState({});
 
-  const openModalHandler = () => {
-    setOpenModal(true);
+  const openModalHandler = (index) => {
+    setOpenModal({ ...isOpenModal, [index]: true });
   };
 
-  const closeModalHandler = () => {
-    setOpenModal(false);
+  const closeModalHandler = (index) => {
+    setOpenModal({ ...isOpenModal, [index]: false });
     history.push("/");
   };
 
   return (
     <div>
-      {costumers.map((item, index) => (
+      {costumers.map((item) => (
         <div className="card">
-          <div className="card-header" key={index}>
+          <div className="card-header" key={item.id}>
             <h3 className="card-header__title">{item.name}</h3>
           </div>
-          {item.list.map((val, index) => (
+          {item.list.map((val) => (
             <>
               <Modal
                 item={val}
-                isOpenModal={isOpenModal}
+                isOpenModal={isOpenModal[val.id]}
                 closeModal={closeModalHandler}
-                closeModalHandler={closeModalHandler}
+                closeModalHandler={() => closeModalHandler(val.id)}
               />
               <div
                 className="option"
-                key={index}
-                onClick={() => openModalHandler()}
+                key={val.id}
+                onClick={() => openModalHandler(val.id)}
               >
                 <p className="option__name">{val.email}</p>
               </div>
