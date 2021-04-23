@@ -5,7 +5,7 @@ import { history } from "../routers/AppRouter";
 const CostumerList = ({ costumers, title }) => {
   const [isOpenModal, setOpenModal] = useState(false);
 
-  const openModalHandler = (e) => {
+  const openModalHandler = () => {
     setOpenModal(true);
   };
 
@@ -21,23 +21,16 @@ const CostumerList = ({ costumers, title }) => {
       </div>
       {costumers.map((item, index) => (
         <div>
-          <Modal isOpenModal={isOpenModal} closeModal={closeModalHandler}>
-            <h3 className="modal__title">Details:</h3>
-
-            <p className="modal__selected">{item.email}</p>
-
-            <p className="modal__selected">{item.fullname}</p>
-            <p className="modal__selected">{item.phone}</p>
-            <p className="modal__selected">{item.address}</p>
-
-            <button className="modal__button" onClick={closeModalHandler}>
-              Okay
-            </button>
-          </Modal>
+          <Modal
+            item={item}
+            isOpenModal={isOpenModal}
+            closeModal={closeModalHandler}
+            closeModalHandler={closeModalHandler}
+          />
           <div
             className="option"
             key={index}
-            onClick={() => openModalHandler(index)}
+            onClick={() => openModalHandler()}
           >
             <p className="option__name">{item.email}</p>
           </div>
