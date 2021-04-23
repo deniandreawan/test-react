@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "./CostumerModal";
 import { history } from "../routers/AppRouter";
 
-const CostumerList = ({ costumers, title }) => {
+const CostumerList = ({ costumers }) => {
   const [isOpenModal, setOpenModal] = useState(false);
 
   const openModalHandler = () => {
@@ -16,24 +16,28 @@ const CostumerList = ({ costumers, title }) => {
 
   return (
     <div>
-      <div className="card-header">
-        <h3 className="card-header__title">{title}</h3>
-      </div>
       {costumers.map((item, index) => (
-        <div>
-          <Modal
-            item={item}
-            isOpenModal={isOpenModal}
-            closeModal={closeModalHandler}
-            closeModalHandler={closeModalHandler}
-          />
-          <div
-            className="option"
-            key={index}
-            onClick={() => openModalHandler()}
-          >
-            <p className="option__name">{item.email}</p>
+        <div className="card">
+          <div className="card-header" key={index}>
+            <h3 className="card-header__title">{item.name}</h3>
           </div>
+          {item.list.map((val, index) => (
+            <>
+              <Modal
+                item={val}
+                isOpenModal={isOpenModal}
+                closeModal={closeModalHandler}
+                closeModalHandler={closeModalHandler}
+              />
+              <div
+                className="option"
+                key={index}
+                onClick={() => openModalHandler()}
+              >
+                <p className="option__name">{val.email}</p>
+              </div>
+            </>
+          ))}
         </div>
       ))}
       {costumers.length === 0 && (
