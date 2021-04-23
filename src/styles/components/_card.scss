@@ -1,0 +1,50 @@
+.card {
+    background: #fff;
+    padding-bottom: $m-size;
+    margin-bottom: $m-size;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0,0,0,.2);
+}
+
+.card-header {
+    //background: lighten($dark-blue, 4%);   
+    color: $blue;
+    padding: $m-size $l-size;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 95%;
+        height: 1px;
+        background: transparentize($off-black, .9);
+    }
+}
+
+.card-header__title {
+    margin: 0;
+    margin-top: 10px;
+    color: transparentize($off-black, .3);
+    
+}
+
+.card__message {
+    color: $off-white;
+    text-align: center;
+    padding: $m-size;
+    //border-bottom: 1px solid lighten($light-blue, 10%);
+    font-size: $m-size;
+    font-weight: bold;
+}
+
+@media(max-width: $mobile) {
+    .card-header__title {
+        font-size: $m-size;
+    }
+}

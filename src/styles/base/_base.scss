@@ -1,0 +1,38 @@
+html {
+    font-size: 62.5%;
+    height: auto;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    height: auto;
+    background: linear-gradient(45deg, $l-blue 60%, $d-blue) no-repeat center;
+    padding-bottom: 15rem;
+}
+
+h1, 
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+p, 
+span,
+input,
+::-webkit-input-placeholder,
+::placeholder  {
+    font-family: 'Open Sans', sans-serif;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
