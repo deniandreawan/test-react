@@ -1,6 +1,7 @@
 .option {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
     padding: $l-size;
     //border-bottom: 1px solid lighten($light-blue, 10%);
     position: relative;
